@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   APP LAYOUT
+   ============================================ */
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main-with-nav {
+  padding-top: 0;
+}
+
+/* Page Container */
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  width: 100%;
+}
+
+.page-container-narrow {
+  max-width: 900px;
+}
+
+/* Page Header */
+.page-header {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.page-title {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  color: var(--color-black);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.02em;
+}
+
+.page-subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-gray-600);
+  font-weight: var(--font-normal);
+}
+
+/* Section */
+.section {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.section-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-black);
+  margin-bottom: var(--spacing-lg);
+}
+
+.section-subtitle {
+  font-size: var(--text-base);
+  color: var(--color-gray-600);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Grid Layouts */
+.grid {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 640px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Flex Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.gap-xl {
+  gap: var(--spacing-xl);
+}
+
+/* Text Utilities */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-gray {
+  color: var(--color-gray-600);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-primary {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+.badge-success {
+  background: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.badge-error {
+  background: var(--color-error-light);
+  color: var(--color-error);
+}
+
+.badge-gray {
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-gray-200);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+}
+
+.empty-state-icon {
+  font-size: var(--text-5xl);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.5;
+}
+
+.empty-state-title {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  color: var(--color-black);
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state-text {
+  font-size: var(--text-base);
+  color: var(--color-gray-600);
+  margin-bottom: var(--spacing-xl);
+}
+
+
+/* ============================================
+   GLOBAL WALLET BUTTON STYLING
+   ============================================ */
+
+/* Override Sui Wallet Kit default styles */
+[data-dapp-kit] button,
+[data-dapp-kit] [role="button"] {
+  background: linear-gradient(135deg, #6C63FF 0%, #8B7FFF 100%) !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.25) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+[data-dapp-kit] button:hover,
+[data-dapp-kit] [role="button"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.35) !important;
+}
+
+[data-dapp-kit] button:active,
+[data-dapp-kit] [role="button"]:active {
+  transform: translateY(0) !important;
+}
+
+/* Connected wallet button */
+[data-dapp-kit] button[data-state="connected"],
+[data-dapp-kit] [aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #6C63FF !important;
+  border: 2px solid #6C63FF !important;
+  box-shadow: 0 4px 16px rgba(108, 99, 255, 0.15) !important;
+}
+
+[data-dapp-kit] button[data-state="connected"]:hover,
+[data-dapp-kit] [aria-expanded="true"]:hover {
+  background: white !important;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.25) !important;
+}
+
+/* Wallet dropdown menu */
+[data-dapp-kit] [role="menu"],
+[data-dapp-kit] [role="dialog"] {
+  background: white !important;
+  border: 2px solid #e5e7eb !important;
+  border-radius: 16px !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12) !important;
+  padding: 8px !important;
+  margin-top: 8px !important;
+}
+
+/* Wallet menu items */
+[data-dapp-kit] [role="menuitem"],
+[data-dapp-kit] [role="option"] {
+  background: transparent !important;
+  color: #1e293b !important;
+  border-radius: 10px !important;
+  padding: 12px 16px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+[data-dapp-kit] [role="menuitem"]:hover,
+[data-dapp-kit] [role="option"]:hover {
+  background: rgba(108, 99, 255, 0.08) !important;
+  color: #6C63FF !important;
+  transform: none !important;
+}
+
+/* Account switcher */
+[data-dapp-kit] [role="menuitem"][data-selected="true"],
+[data-dapp-kit] [role="option"][data-selected="true"] {
+  background: rgba(108, 99, 255, 0.12) !important;
+  color: #6C63FF !important;
+  font-weight: 600 !important;
+}
+
+/* Wallet icons in menu */
+[data-dapp-kit] img {
+  border-radius: 8px !important;
+}
+
+/* Disconnect button */
+[data-dapp-kit] button[data-variant="destructive"] {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+  border: none !important;
+}
+
+[data-dapp-kit] button[data-variant="destructive"]:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.35) !important;
+}

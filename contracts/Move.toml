@@ -1,0 +1,10 @@
+[package]
+name = "ghostcontext"
+version = "1.0.0"
+
+[dependencies]
+Sui = "1.61.1" 
+
+[addresses]
+ghostcontext = "0x0"
+

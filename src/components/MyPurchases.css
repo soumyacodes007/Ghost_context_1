@@ -1,0 +1,447 @@
+/* ============================================
+   MY PURCHASES PAGE - Modern White + Purple Theme
+   ============================================ */
+
+.purchases-container {
+  min-height: calc(100vh - 70px);
+  background: var(--color-white);
+}
+
+/* Using global page-container for purchases-content */
+
+.loading-state {
+  text-align: center;
+  padding: var(--spacing-3xl);
+}
+
+/* Using global empty-state classes */
+
+.receipts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.receipt-card {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  border: 1px solid var(--color-gray-100);
+  transition: all var(--transition-base);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.receipt-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, #9D8FFF 100%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.receipt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: var(--color-gray-200);
+}
+
+.receipt-card:hover::before {
+  opacity: 1;
+}
+
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+  gap: var(--spacing-md);
+}
+
+.receipt-header h3 {
+  margin: 0;
+  font-size: var(--text-xl);
+  flex: 1;
+  color: var(--color-black);
+  font-weight: var(--font-semibold);
+  line-height: 1.3;
+}
+
+.badge-active,
+.badge-expired {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: var(--font-semibold);
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.badge-active {
+  background: var(--color-success-light);
+  color: var(--color-success);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.badge-expired {
+  background: var(--color-error-light);
+  color: var(--color-error);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.receipt-details {
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--text-sm);
+  padding: var(--spacing-sm) 0;
+}
+
+.detail-row svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-gray-400);
+  flex-shrink: 0;
+}
+
+.detail-label {
+  color: var(--color-gray-500);
+  font-size: var(--text-sm);
+  min-width: 120px;
+}
+
+.detail-value {
+  color: var(--color-black);
+  font-weight: var(--font-medium);
+  font-size: var(--text-sm);
+  flex: 1;
+}
+
+.detail-value strong {
+  font-weight: var(--font-bold);
+  color: var(--color-primary);
+}
+
+.detail-value code {
+  background: var(--color-gray-50);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--color-gray-700);
+  font-family: 'Courier New', monospace;
+  border: 1px solid var(--color-gray-200);
+}
+
+.receipt-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-primary-hover);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: var(--color-gray-100);
+  color: var(--color-gray-600);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Use Marketplace Card Styles */
+.receipts-grid .marketplace-card {
+  height: 100%;
+}
+
+.receipts-grid .marketplace-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.receipts-grid .marketplace-card-footer {
+  padding: 16px 20px;
+  background: linear-gradient(180deg, #f9fafb 0%, #f3f4f6 100%);
+  border-top: 1px solid #e5e7eb;
+}
+
+.receipts-grid .title-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 60px;
+}
+
+.receipts-grid .card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.receipts-grid .category-tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.receipts-grid .doc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.receipts-grid .doc-tag {
+  padding: 4px 10px;
+  background: #f1f5f9;
+  color: #64748b;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+}
+
+.receipts-grid .price-container {
+  padding: 16px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 2px solid #7dd3fc;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.receipts-grid .price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.receipts-grid .price-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0369a1;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.receipts-grid .price-unit {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0284c7;
+}
+
+.receipts-grid .price-subtitle {
+  font-size: 11px;
+  color: #0369a1;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.receipts-grid .stats-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.receipts-grid .stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  color: #64748b;
+}
+
+.receipts-grid .stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'Inter', sans-serif;
+}
+
+.receipts-grid .stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+.receipts-grid .stat-divider {
+  width: 1px;
+  height: 20px;
+  background: #e5e7eb;
+}
+
+.receipts-grid .owner-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}
+
+.receipts-grid .owner-address {
+  color: #475569;
+  font-weight: 600;
+}
+
+.receipts-grid .action-btn {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.receipts-grid .purchase-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.receipts-grid .purchase-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.receipts-grid .unavailable-btn {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.receipts-grid .action-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Blob ID Row with Copy Button */
+.receipts-grid .blob-id-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #7dd3fc;
+  border-radius: 8px;
+}
+
+.receipts-grid .blob-id-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.receipts-grid .blob-id-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #0369a1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.receipts-grid .blob-id-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0284c7;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.receipts-grid .copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: white;
+  border: 1px solid #7dd3fc;
+  border-radius: 6px;
+  color: #0369a1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.receipts-grid .copy-btn:hover {
+  background: #0369a1;
+  color: white;
+  border-color: #0369a1;
+  transform: scale(1.05);
+}
+
+.receipts-grid .copy-btn:active {
+  transform: scale(0.95);
+}
