@@ -4,13 +4,13 @@
 
 ### The World's First Decentralized Marketplace for Private AI Knowledge
 
-[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_App-6C63FF?style=for-the-badge)](https://your-deployment-url.vercel.app)
-[![YouTube](https://img.shields.io/badge/📺_Demo_Video-Watch_Now-FF0000?style=for-the-badge&logo=youtube)](https://youtube.com/your-demo)
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_App-6C63FF?style=for-the-badge)](https://ghost-context-1.vercel.app)
+[![YouTube](https://img.shields.io/badge/📺_Demo_Video-Watch_Now-FF0000?style=for-the-badge&logo=youtube)](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8yAdCN)
 [![Sui Network](https://img.shields.io/badge/Built_on-Sui_Testnet-4DA2FF?style=for-the-badge&logo=sui)](https://sui.io)
 [![Walrus](https://img.shields.io/badge/Storage-Walrus-00D4AA?style=for-the-badge)](https://walrus.site)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](./LICENSE)
 
-<img src="public/web-app-manifest-512x512.png" alt="GhostContext Logo" width="200"/>
+<img src="src/components/assets/icon.jpg" alt="GhostContext Logo" width="200"/>
 
 *Monetize sensitive documents without ever revealing the raw file to a server.*
 
@@ -159,10 +159,10 @@ Central hub for accessing all GhostContext features with a clean, modern interfa
 ## Live Demo
 
 ### Deployed Application
-Visit: [https://your-deployment-url.vercel.app](https://your-deployment-url.vercel.app)
+Visit: [https://ghost-context-1.vercel.app](https://ghost-context-1.vercel.app)
 
 ### Video Walkthrough
-Watch the full demo: [YouTube Demo](https://youtube.com/your-demo)
+Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8yAdCN)
 
 ### Try It Yourself
 
@@ -687,8 +687,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-- *Website*: [https://ghostcontext.app](https://ghostcontext.app)
-- *Twitter*: [@GhostContext](https://twitter.com/ghostcontext)
+- *Website*: [https://ghost-context-1.vercel.app](https://ghost-context-1.vercel.app)
+- *Twitter*: [@Riddhisen382324](https://x.com/Riddhisen382324?t=6JWANbEnHAy6Vl_iw0V3dQ&s=09)
 - *Discord*: [Join our community](https://discord.gg/ghostcontext)
 - *Email*: hello@ghostcontext.app
 
@@ -793,6 +793,6 @@ We will migrate to Seal for:
 
 *Founders*: Ankit & Rick
 
-[⭐ Star us on GitHub](https://github.com/yourusername/ghostcontext) • [🐦 Follow on Twitter](https://twitter.com/ghostcontext) • [💬 Join Discord](https://discord.gg/ghostcontext)
+[⭐ Star us on GitHub](https://github.com/yourusername/ghostcontext) • [🐦 Follow on Twitter](https://x.com/Riddhisen382324?t=6JWANbEnHAy6Vl_iw0V3dQ&s=09) • [💬 Join Discord](https://discord.gg/ghostcontext)
 
 </div>
