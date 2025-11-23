@@ -25,7 +25,7 @@ const Vault = () => {
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadStatus, setUploadStatus] = useState("");
-  const [uploadFileName, setUploadFileName] = useState("");
+  const [, setUploadFileName] = useState("");
   const [ghostPayload, setGhostPayload] = useState<GhostContextPayload | null>(null);
   const [walrusBlobId, setWalrusBlobId] = useState("");
   const [isEncrypting, setIsEncrypting] = useState(false);

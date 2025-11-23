@@ -34,7 +34,7 @@ export async function encryptData(
   console.log("  Key will be stored on-chain - anyone with NFT can decrypt!");
   
   return {
-    encryptedBlob: new Blob([encryptedBytes], { type: "application/octet-stream" }),
+    encryptedBlob: new Blob([new Uint8Array(encryptedBytes)], { type: "application/octet-stream" }),
     encryptionKey: Array.from(keyBytes).map(b => b.toString(16).padStart(2, '0')).join(''),
     iv: Array.from(iv).map(b => b.toString(16).padStart(2, '0')).join('')
   };
@@ -72,7 +72,7 @@ export async function decryptData(
     const decryptedBytes = await crypto.subtle.decrypt(
       { name: "AES-GCM", iv: ivBytes },
       key,
-      encryptedBytes
+      encryptedBytes as BufferSource
     );
     
     console.log("  Decrypted:", decryptedBytes.byteLength, "bytes");

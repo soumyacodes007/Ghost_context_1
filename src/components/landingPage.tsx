@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
-import { Lock, Bot, DollarSign, Cloud, ArrowRight, Sparkles, Shield, Database, Coins, Cpu } from "lucide-react";
+import { ArrowRight, Sparkles, Shield, Database, Coins, Cpu } from "lucide-react";
 import "./LandingPage.css";
 
 const LandingPage = () => {

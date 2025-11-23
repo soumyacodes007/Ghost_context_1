@@ -51,7 +51,6 @@ export class RagEngine {
     useHybridSearch = false,
     enableSourceCitations = false
   ): Promise<string> {
-    const ragStartTime = performance.now();
     console.log("🔍 RAG Query started:", question);
 
     const totalChunks = await this.vectorStore.getChunkCount();
@@ -115,7 +114,6 @@ export class RagEngine {
     console.log("✅ Context length:", context.length, "chars");
 
     console.log("4️⃣ Generating answer with LLM...");
-    const llmStart = performance.now();
 
     let conversationContext = "";
     if (conversationHistory.length > 0) {

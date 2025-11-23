@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import {
-  ConnectButton,
   useCurrentAccount,
   useSignAndExecuteTransaction,
   useSuiClient,
@@ -64,24 +63,24 @@ const Home = () => {
     null
   );
   const [walrusBlobId, setWalrusBlobId] = useState("");
-  const [ghostStatus, setGhostStatus] = useState("");
-  const [isEncrypting, setIsEncrypting] = useState(false);
+  const [, setGhostStatus] = useState("");
+  const [, setIsEncrypting] = useState(false);
   const [encryptionMetadata, setEncryptionMetadata] = useState<EncryptedMetadata | null>(
     null
   );
-  const [remoteBlobId, setRemoteBlobId] = useState("");
+  const [remoteBlobId] = useState("");
   const [contextTitle, setContextTitle] = useState("");
-  const [contextCategory, setContextCategory] = useState("General");
-  const [pricePerQuery, setPricePerQuery] = useState("1");
+  const [contextCategory] = useState("General");
+  const [pricePerQuery] = useState("1");
   const [mintedContextId, setMintedContextId] = useState("");
-  const [isMinting, setIsMinting] = useState(false);
+  const [, setIsMinting] = useState(false);
   const [registrySharedVersion, setRegistrySharedVersion] = useState<
     string | null
   >(null);
   const [contextSharedVersion, setContextSharedVersion] = useState<
     string | null
   >(null);
-  const [isLoadingRemote, setIsLoadingRemote] = useState(false);
+  const [, setIsLoadingRemote] = useState(false);
 
   const currentAccount = useCurrentAccount();
   const suiClient = useSuiClient();
@@ -444,7 +443,8 @@ const Home = () => {
     [getRag]
   );
 
-  const handleEncryptAndUpload = async () => {
+  // @ts-ignore - Function kept for future use
+  const _handleEncryptAndUpload = async () => {
     if (!ghostPayload) {
       showToastNotification("Upload a document before encrypting.", "error");
       return;
@@ -491,7 +491,8 @@ const Home = () => {
 
   // Session key function removed - no longer needed with Web Crypto API
 
-  const handleLoadFromWalrus = async () => {
+  // @ts-ignore - Function kept for future use
+  const _handleLoadFromWalrus = async () => {
     if (!remoteBlobId.trim()) {
       showToastNotification("Enter a Walrus blob ID first.", "error");
       return;
@@ -539,7 +540,8 @@ const Home = () => {
     }
   };
 
-  const handleMintContext = async () => {
+  // @ts-ignore - Function kept for future use
+  const _handleMintContext = async () => {
     if (!currentAccount) {
       showToastNotification("Connect a Sui wallet before minting.", "error");
       return;
@@ -609,7 +611,8 @@ const Home = () => {
     }
   };
 
-  const handleListContext = async () => {
+  // @ts-ignore - Function kept for future use
+  const _handleListContext = async () => {
     if (!currentAccount) {
       showToastNotification("Connect a wallet first.", "error");
       return;

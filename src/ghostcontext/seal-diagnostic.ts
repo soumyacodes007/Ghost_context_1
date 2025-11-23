@@ -63,7 +63,7 @@ export async function testFullCycle(
     
     // Step 6: Decrypt
     console.log('\n━━━ STEP 6: Decrypt with Seal ━━━');
-    const decrypted = await decryptContext(fetchedBytes, sessionKey);
+    const decrypted = await decryptContext(fetchedBytes, sessionKey, sealPackageId);
     console.log(`✅ Decryption complete`);
     console.log(`  Decrypted data: "${decrypted}"`);
     

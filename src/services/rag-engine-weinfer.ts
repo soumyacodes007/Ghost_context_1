@@ -33,7 +33,6 @@ export class RagEngineWeInfer {
     useHybridSearch = false,
     enableSourceCitations = false
   ): Promise<string> {
-    const ragStartTime = performance.now();
     console.log('🔍 RAG Query started (WeInfer):', question);
     
     const totalChunks = await this.vectorStore.getChunkCount();

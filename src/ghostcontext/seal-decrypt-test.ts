@@ -1,5 +1,5 @@
 // Temporary test to debug seal.decrypt issue
-import { SealClient, SessionKey } from "@mysten/seal";
+import { SealClient } from "@mysten/seal";
 import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
 
 const sui = new SuiClient({ url: getFullnodeUrl("testnet") });

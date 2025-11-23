@@ -1,7 +1,7 @@
 import { SealClient, SessionKey } from "@mysten/seal";
 import { SuiClient, getFullnodeUrl } from "@mysten/sui/client";
 import { Transaction } from "@mysten/sui/transactions";
-import { deserializeSealObject, serializeSealObject } from "./seal-serialization";
+import { serializeSealObject } from "./seal-serialization";
 
 const sui = new SuiClient({ url: getFullnodeUrl("testnet") });
 
@@ -64,7 +64,7 @@ export async function encryptContext(
   }
   
   return {
-    encryptedBlob: new Blob([blobData], { type: "application/octet-stream" }),
+    encryptedBlob: new Blob([new Uint8Array(blobData)], { type: "application/octet-stream" }),
     policyId,
   };
 }
