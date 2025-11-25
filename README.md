@@ -1,9 +1,8 @@
 <div align="center">
 
-# 👻 GhostContext
+#  GhostContext
 
-### The World's First Decentralized Marketplace for Private AI Knowledge
-
+###### The First **WebLLM-Powered** Dentralized Marketplace for Private AI Knowledge
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_App-6C63FF?style=for-the-badge)](https://ghost-context-1.vercel.app)
 [![YouTube](https://img.shields.io/badge/📺_Demo_Video-Watch_Now-FF0000?style=for-the-badge&logo=youtube)](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8yAdCN)
 [![Sui Network](https://img.shields.io/badge/Built_on-Sui_Testnet-4DA2FF?style=for-the-badge&logo=sui)](https://sui.io)
@@ -196,7 +195,7 @@ Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8y
 
 ### Why Walrus?
 
-*Walrus is the only decentralized storage built for the Sui ecosystem.*
+*Walrus is the native decentralized storage layer for Sui, allowing us to bind Blob IDs directly to NFT Metadata objects efficiently.*
 
 - 🔗 *Native Sui Integration*: Seamless blob storage with on-chain references
 - 💾 *Cost-Effective*: ~$0.10 per GB vs. $5-20 on competitors
@@ -210,7 +209,7 @@ Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8y
 - Arweave is expensive for frequent updates
 - Neither integrate natively with Sui's object model
 
-### Why Seal? (Planned Integration)
+### Encryption Strategy (Seal vs. Web Crypto)
 
 *Seal enables policy-based encryption for enterprise use cases.*
 
@@ -231,95 +230,34 @@ Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8y
 
 ## Architecture
 
+```mermaid
+flowchart LR
+   subgraph Seller["Seller's Browser"]
+      U1[Upload & Process]
+      U2[Encrypt (AES-256-GCM)]
+      U3[Upload to Walrus]
+      U4[Mint NFT on Sui]
+      U1 --> U2 --> U3 --> U4
+   end
 
-┌─────────────────────────────────────────────────────────────────────────┐
-│                           SELLER'S BROWSER                               │
-│                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 1: Upload & Process                                        │   │
-│  │  • User uploads PDF document                                     │   │
-│  │  • Parse PDF → Extract text chunks                               │   │
-│  │  • Generate embeddings (Transformers.js)                         │   │
-│  │  • Store in local vector database                                │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-│                                  ↓                                        │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 2: Encrypt (Client-Side)                                   │   │
-│  │  • Generate random AES-256-GCM key (Web Crypto API)              │   │
-│  │  • Encrypt document chunks + embeddings                          │   │
-│  │  • Create GhostContext payload (JSON)                            │   │
-│  │  • Plaintext NEVER leaves the browser                            │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-│                                  ↓                                        │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 3: Upload to Walrus                                        │   │
-│  │  • POST encrypted blob to Walrus Publisher                       │   │
-│  │  • Receive Blob ID (content-addressed hash)                      │   │
-│  │  • Blob stored across decentralized network                      │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-│                                  ↓                                        │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 4: Mint NFT on Sui                                         │   │
-│  │  • Call create_context() smart contract                          │   │
-│  │  • Store: title, blob_id, encryption_key, iv, category           │   │
-│  │  • NFT minted with embedded decryption keys                      │   │
-│  │  • Set price_per_query and list for sale                         │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────────────┘
-                                  ↓
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        DECENTRALIZED LAYER                               │
-│                                                                           │
-│  ┌──────────────────────────────┐    ┌──────────────────────────────┐  │
-│  │      Walrus Network          │    │      Sui Blockchain          │  │
-│  │                              │    │                              │  │
-│  │  • Encrypted Blob Storage    │    │  • GhostContext NFT          │  │
-│  │  • Content-Addressed         │    │  • Encryption Keys           │  │
-│  │  • Decentralized Nodes       │    │  • Access Control Logic      │  │
-│  │  • Immutable & Censorship-   │    │  • Query Tracking            │  │
-│  │    Resistant                 │    │  • Revenue Distribution      │  │
-│  │                              │    │  • Marketplace Registry      │  │
-│  │  Blob ID: 0xabc123...        │    │  NFT ID: 0xdef456...         │  │
-│  └──────────────────────────────┘    └──────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────────────────┘
-                                  ↓
-┌─────────────────────────────────────────────────────────────────────────┐
-│                           BUYER'S BROWSER                                │
-│                                                                           │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 1: Purchase Access                                         │   │
-│  │  • Browse marketplace → Select context                           │   │
-│  │  • Call purchase_queries() with payment                          │   │
-│  │  • Receive QueryReceipt NFT with encryption keys                 │   │
-│  │  • Smart contract verifies payment & transfers keys              │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-│                                  ↓                                        │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 2: Download Encrypted Blob                                 │   │
-│  │  • Fetch blob_id from QueryReceipt NFT                           │   │
-│  │  • GET request to Walrus Aggregator                              │   │
-│  │  • Download encrypted payload (still encrypted!)                 │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-│                                  ↓                                        │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 3: Decrypt Locally                                         │   │
-│  │  • Extract encryption_key + iv from QueryReceipt                 │   │
-│  │  • Decrypt blob using AES-256-GCM (Web Crypto API)               │   │
-│  │  • Deserialize GhostContext payload                              │   │
-│  │  • Load chunks + embeddings into local vector store              │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-│                                  ↓                                        │
-│  ┌─────────────────────────────────────────────────────────────────┐   │
-│  │  Step 4: Chat with Local AI                                      │   │
-│  │  • User asks question                                            │   │
-│  │  • Embed question → Search vector store → Retrieve chunks        │   │
-│  │  • Build RAG prompt with context                                 │   │
-│  │  • Run Llama-3 model locally (WebLLM + WebGPU)                   │   │
-│  │  • Stream response back to user                                  │   │
-│  │  • ALL PROCESSING HAPPENS IN BROWSER (Zero server calls!)        │   │
-│  └─────────────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────────────┘
+   subgraph Decentralized["Decentralized Layer"]
+      Walrus[Walrus (Blob Storage)]
+      Sui[Sui Blockchain (NFTs & Access Control)]
+   end
 
+   subgraph Buyer["Buyer's Browser"]
+      B1[Purchase Access]
+      B2[Download Encrypted Blob]
+      B3[Decrypt Locally]
+      B4[Chat with Local AI]
+      B1 --> B2 --> B3 --> B4
+   end
+
+   U4 --> Walrus
+   U4 --> Sui
+   Walrus --> B2
+   Sui --> B1
+```
 
 ### Key Components
 
@@ -345,9 +283,10 @@ Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8y
 
 ---
 
-##   DProject Structure
 
+## Project Structure
 
+```text
 ghostcontext/
 ├── contracts/                    # Sui Move smart contracts
 │   ├── source/
@@ -398,7 +337,7 @@ ghostcontext/
 ├── package.json               # Dependencies
 ├── vite.config.ts             # Vite configuration
 └── README.md                  # This file
-
+```
 
 ---
 
@@ -447,7 +386,7 @@ ghostcontext/
 
 ### Installation
 
-bash
+```bash
 # Clone the repository
 git clone https://github.com/yourusername/ghostcontext.git
 cd ghostcontext
@@ -461,20 +400,23 @@ cp .env.example .env
 
 # Start development server
 pnpm dev
+```
 
 
 ### Environment Variables
 
-env
-VITE_GHOSTCONTEXT_PACKAGE_ID=0x...    # Deployed contract address
+```env
+VITE_GHOSTCONTEXT_PACKAGE_ID=0x8ddf7cece3571b8758acbe667a8e2ddf8e0cef8e283a589459619b63fa4cb97a    # Deployed contract address
+# View on Sui Explorer (testnet): https://explorer.sui.io/object/0x8ddf7cece3571b8758acbe667a8e2ddf8e0cef8e283a589459619b63fa4cb97a?network=testnet
 VITE_GHOSTCONTEXT_REGISTRY_ID=0x...   # Registry object ID
 VITE_WALRUS_PUBLISHER_URL=https://...  # Walrus publisher endpoint
 VITE_WALRUS_AGGREGATOR_URL=https://... # Walrus aggregator endpoint
+```
 
 
 ### Deploy Smart Contracts
 
-bash
+```bash
 cd contracts
 
 # Build contracts
@@ -484,6 +426,7 @@ sui move build
 sui client publish --gas-budget 100000000
 
 # Note the package ID and registry ID for .env
+```
 
 
 ### Enable WebGPU (if needed)
@@ -499,7 +442,7 @@ sui client publish --gas-budget 100000000
 
 ### 1️⃣ *Upload & Encrypt*
 
-typescript
+```typescript
 // Upload a PDF document
 const file = document.getElementById('fileInput').files[0];
 
@@ -508,69 +451,73 @@ const { encryptedData, key, iv } = await encryptFile(file);
 
 // Upload to Walrus
 const blobId = await uploadToWalrus(encryptedData);
+```
 
 
 ### 2️⃣ *Mint NFT*
 
-typescript
+```typescript
 // Create GhostContext NFT with embedded keys
 const tx = new Transaction();
 tx.moveCall({
-  target: `${packageId}::ghostcontext::create_context`,
-  arguments: [
-    tx.pure.string(title),
-    tx.pure.string(blobId),
-    tx.pure.string(key),
-    tx.pure.string(iv),
-    tx.pure.string(category),
-    tx.object(registryId),
-  ],
+   target: `${packageId}::ghostcontext::create_context`,
+   arguments: [
+      tx.pure.string(title),
+      tx.pure.string(blobId),
+      tx.pure.string(key),
+      tx.pure.string(iv),
+      tx.pure.string(category),
+      tx.object(registryId),
+   ],
 });
+```
 
 
 ### 3️⃣ *List for Sale*
 
-typescript
+```typescript
 // Set price per query (in MIST)
 tx.moveCall({
-  target: `${packageId}::ghostcontext::list_context`,
-  arguments: [
-    tx.object(contextId),
-    tx.pure.u64(pricePerQuery),
-  ],
+   target: `${packageId}::ghostcontext::list_context`,
+   arguments: [
+      tx.object(contextId),
+      tx.pure.u64(pricePerQuery),
+   ],
 });
+```
 
 
 ### 4️⃣ *Purchase & Decrypt*
 
-typescript
+```typescript
 // Buy queries
 tx.moveCall({
-  target: `${packageId}::ghostcontext::purchase_queries`,
-  arguments: [
-    tx.object(contextId),
-    tx.pure.u64(queryCount),
-    coin,
-    tx.object(registryId),
-  ],
+   target: `${packageId}::ghostcontext::purchase_queries`,
+   arguments: [
+      tx.object(contextId),
+      tx.pure.u64(queryCount),
+      coin,
+      tx.object(registryId),
+   ],
 });
 
 // Decrypt with keys from receipt NFT
 const decrypted = await decryptData(encryptedBlob, key, iv);
+```
 
 
 ### 5️⃣ *Chat with AI*
 
-typescript
+```typescript
 // Load document into RAG
 await rag.ingest(decryptedFile);
 
 // Ask questions
 const answer = await rag.query(
-  "What is this document about?",
-  (partial) => console.log(partial) // Streaming
+   "What is this document about?",
+   (partial) => console.log(partial) // Streaming
 );
-
+```
 
 ---
 
