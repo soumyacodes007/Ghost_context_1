@@ -232,32 +232,53 @@ Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8y
 ## Architecture
 
 ```mermaid
-flowchart LR
-   subgraph Seller["Seller's Browser"]
-      U1["Upload & Process"]
-      U2["Encrypt (AES-256-GCM)"]
-      U3["Upload to Walrus"]
-      U4["Mint NFT on Sui"]
-      U1 --> U2 --> U3 --> U4
-   end
+flowchart TD
+    %% Styling
+    classDef browser fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef chain fill:#e1f5fe,stroke:#0277bd,stroke-width:2px;
+    classDef storage fill:#e0f2f1,stroke:#00695c,stroke-width:2px;
 
-   subgraph Decentralized["Decentralized Layer"]
-      Walrus["Walrus (Blob Storage)"]
-      Sui["Sui Blockchain (NFTs & Access Control)"]
-   end
+    subgraph Creator ["👤 Creator Flow (Browser)"]
+        Raw["📄 Raw PDF Document"]
+        Encrypt["🔐 AES-256-GCM Encryption"]
+        KeyGen["🔑 Generate Random Key/IV"]
+        
+        Raw --> KeyGen
+        KeyGen --> Encrypt
+    end
 
-   subgraph Buyer["Buyer's Browser"]
-      B1["Purchase Access"]
-      B2["Download Encrypted Blob"]
-      B3["Decrypt Locally"]
-      B4["Chat with Local AI"]
-      B1 --> B2 --> B3 --> B4
-   end
+    subgraph Infrastructure ["🌐 Decentralized Protocol"]
+        Walrus[("🐳 Walrus Storage\n(Encrypted Blobs Only)")]
+        Sui[("💧 Sui Smart Contract\n(Marketplace & Access Control)")]
+    end
 
-   U4 --> Walrus
-   U4 --> Sui
-   Walrus --> B2
-   Sui --> B1
+    subgraph Consumer ["👥 Buyer Flow (Browser + WebGPU)"]
+        Pay["💰 Purchase (SUI Token)"]
+        Fetch["📥 Fetch Encrypted Blob"]
+        Decrypt["🔓 Client-Side Decryption"]
+        Vector["📚 RAG Vector Store (IndexedDB)"]
+        Inference["🧠 WebLLM Inference (Local GPU)"]
+    end
+
+    %% Connections - Upload Flow
+    Encrypt -- "1. Upload Encrypted Blob" --> Walrus
+    Walrus -- "2. Return Blob ID" --> Creator
+    Creator -- "3. Mint NFT (Blob ID + Encr. Key)" --> Sui
+
+    %% Connections - Purchase Flow
+    Pay -- "4. Buy Access" --> Sui
+    Sui -- "5. Deliver NFT (Key + Blob ID)" --> Consumer
+    
+    %% Connections - Usage Flow
+    Walrus -.->|"6. Download Blob"| Fetch
+    Fetch --> Decrypt
+    Decrypt --> Vector
+    Vector --> Inference
+
+    %% Apply Styles
+    class Creator,Consumer browser;
+    class Sui chain;
+    class Walrus storage;
 ```
 
 ### Key Components
