@@ -2,7 +2,8 @@
 
 #  GhostContext
 
-###The First **WebLLM-Powered** Dentralized Marketplace for Private AI Knowledge
+## The First **WebLLM-Powered** Dentralized Marketplace for Private AI Knowledge
+
 [![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-Visit_App-6C63FF?style=for-the-badge)](https://ghost-context-1.vercel.app)
 [![YouTube](https://img.shields.io/badge/📺_Demo_Video-Watch_Now-FF0000?style=for-the-badge&logo=youtube)](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8yAdCN)
 [![Sui Network](https://img.shields.io/badge/Built_on-Sui_Testnet-4DA2FF?style=for-the-badge&logo=sui)](https://sui.io)
