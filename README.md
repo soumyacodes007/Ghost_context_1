@@ -234,23 +234,23 @@ Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8y
 ```mermaid
 flowchart LR
    subgraph Seller["Seller's Browser"]
-      U1[Upload & Process]
-      U2[Encrypt (AES-256-GCM)]
-      U3[Upload to Walrus]
-      U4[Mint NFT on Sui]
+      U1["Upload & Process"]
+      U2["Encrypt (AES-256-GCM)"]
+      U3["Upload to Walrus"]
+      U4["Mint NFT on Sui"]
       U1 --> U2 --> U3 --> U4
    end
 
    subgraph Decentralized["Decentralized Layer"]
-      Walrus[Walrus (Blob Storage)]
-      Sui[Sui Blockchain (NFTs & Access Control)]
+      Walrus["Walrus (Blob Storage)"]
+      Sui["Sui Blockchain (NFTs & Access Control)"]
    end
 
    subgraph Buyer["Buyer's Browser"]
-      B1[Purchase Access]
-      B2[Download Encrypted Blob]
-      B3[Decrypt Locally]
-      B4[Chat with Local AI]
+      B1["Purchase Access"]
+      B2["Download Encrypted Blob"]
+      B3["Decrypt Locally"]
+      B4["Chat with Local AI"]
       B1 --> B2 --> B3 --> B4
    end
 
