@@ -234,9 +234,9 @@ Watch the full demo: [YouTube Demo](https://youtu.be/vTgKUXxiHfk?si=Ln2SE9d5Ri8y
 ```mermaid
 flowchart TD
     %% Styling
-    classDef browser fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef chain fill:#e1f5fe,stroke:#0277bd,stroke-width:2px;
-    classDef storage fill:#e0f2f1,stroke:#00695c,stroke-width:2px;
+    classDef browser fill:#FFD700,stroke:#333,stroke-width:2px,color:#000;
+    classDef chain fill:#87CEEB,stroke:#333,stroke-width:2px,color:#000;
+    classDef storage fill:#98FB98,stroke:#333,stroke-width:2px,color:#000;
 
     subgraph Creator ["👤 Creator Flow (Browser)"]
         Raw["📄 Raw PDF Document"]
@@ -248,8 +248,8 @@ flowchart TD
     end
 
     subgraph Infrastructure ["🌐 Decentralized Protocol"]
-        Walrus[("🐳 Walrus Storage\n(Encrypted Blobs Only)")]
-        Sui[("💧 Sui Smart Contract\n(Marketplace & Access Control)")]
+        Walrus[(" Walrus Storage\n(Encrypted Blobs Only)")]
+        Sui[("Sui Smart Contract\n(Marketplace & Access Control)")]
     end
 
     subgraph Consumer ["👥 Buyer Flow (Browser + WebGPU)"]
@@ -257,7 +257,7 @@ flowchart TD
         Fetch["📥 Fetch Encrypted Blob"]
         Decrypt["🔓 Client-Side Decryption"]
         Vector["📚 RAG Vector Store (IndexedDB)"]
-        Inference["🧠 WebLLM Inference (Local GPU)"]
+        Inference[" WebLLM Inference (Local GPU)"]
     end
 
     %% Connections - Upload Flow
