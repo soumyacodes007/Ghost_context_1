@@ -694,6 +694,8 @@ We implemented a *hybrid approach*:
 - ✅ *Smart contract access control* (token-gated decryption)
 - ✅ *Client-side processing* (zero-knowledge, privacy-preserving)
 
+**Important demo note:** During development we switched to the browser `Web Crypto` API because integrating Seal required significant policy setup and we encountered a decryption bug in the current Seal SDK that blocked reliable end-to-end testing. As a result, the demo and reference code use client-side AES encryption and simplified on-chain key handling. This means that in the demo any document may be purchased by any buyer (the demo does not enforce the full seller-granted Seal policy flow). When we migrate to Seal in production, access will be enforced by Seal policies so the seller (or on-chain policy) explicitly grants access to the buyer.
+
 #### *Future Plans*
 Once Seal matures and provides:
 - Better documentation
